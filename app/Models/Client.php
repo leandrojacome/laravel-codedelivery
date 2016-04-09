@@ -11,12 +11,22 @@ class Client extends Model implements Transformable
     use TransformableTrait;
 
     protected $fillable = [
-        'name',
+        'user_id',
+        'phone',
+        'address',
+        'city',
+        'state',
+        'zipcode',
     ];
 
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
 }
