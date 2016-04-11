@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    <h3>Editar cliente: {{ $client->name }}</h3>
+    <h3>Editar cliente: {{ $client->user->name }}</h3>
 
     @include('errors._ckeck')
 

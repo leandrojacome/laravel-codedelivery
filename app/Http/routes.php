@@ -36,6 +36,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth.check
     Route::get('clients/edit/{id}', ['as' => 'clients.edit', 'uses' => 'AdminClientsController@edit']);
     Route::put('clients/update/{id}', ['as' => 'clients.update', 'uses' => 'AdminClientsController@update']);
     Route::get('clients/destroy/{id}', ['as' => 'clients.destroy', 'uses' => 'AdminClientsController@destroy']);
+
+    Route::get('orders', ['as' => 'orders.index', 'uses' => 'AdminOrdersController@index']);
+
 });
 
 

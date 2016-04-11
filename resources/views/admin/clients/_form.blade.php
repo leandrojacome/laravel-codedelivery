@@ -1,6 +1,12 @@
+{{ Form::hidden('user[id]', null) }}
 <div class="form-group">
-    {{ Form::label('user_id', 'Usuário', array('class' => 'control-label')) }}
-    {{ Form::select('user_id', $users, null , array( 'class' => 'form-control')) }}
+    {{ Form::label('name', 'Nome', array('class' => 'control-label')) }}
+    {{ Form::text('user[name]', null,  array( 'class' => 'form-control')) }}
+</div>
+
+<div class="form-group">
+    {{ Form::label('email', 'E-mail', array('class' => 'control-label')) }}
+    {{ Form::text('user[email]', null,  array( 'class' => 'form-control')) }}
 </div>
 
 <div class="form-group">

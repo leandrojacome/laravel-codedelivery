@@ -23,8 +23,10 @@ class AdminClientRequest extends Request
      */
     public function rules()
     {
+
         return [
-            'user_id' => 'required',
+            'user.name' => 'required|min:3',
+            'user.email' => 'required|unique:users,email,' . $this->request->get('user')['id'],
             'phone' => 'required|min: 3',
             'address' => 'required',
             'city' => 'required',

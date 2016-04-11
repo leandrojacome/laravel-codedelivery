@@ -6,6 +6,7 @@ use CodeDelivery\Http\Requests;
 use CodeDelivery\Http\Requests\AdminClientRequest;
 use CodeDelivery\Repositories\ClientRepository;
 use CodeDelivery\Repositories\UserRepository;
+use CodeDelivery\Services\ClientService;
 
 
 class AdminClientsController extends Controller
@@ -19,18 +20,23 @@ class AdminClientsController extends Controller
      * @var UserRepository
      */
     private $userRepository;
+    /**
+     * @var ClientService
+     */
+    private $clientService;
 
-    public function __construct(ClientRepository $repository, UserRepository $userRepository)
+    public function __construct(ClientRepository $repository, UserRepository $userRepository, ClientService $clientService)
     {
 
         $this->repository = $repository;
         $this->userRepository = $userRepository;
+        $this->clientService = $clientService;
     }
 
     public function index()
     {
-        $clients = $this->repository->paginate(15);
-        
+        $clients = $this->repository->paginate();
+
         return view('admin.clients.index', compact('clients'));
     }
 
@@ -42,19 +48,18 @@ class AdminClientsController extends Controller
 
     public function store(AdminClientRequest $request)
     {
-        $this->repository->create($request->all());
+        $this->clientService->create($request->all());
         return redirect()->route('admin.clients.index');
     }
     public function edit($id)
     {
         $client = $this->repository->find($id);
-        $users = $this->userRepository->lists('name', 'id');
-        return view('admin.clients.edit', compact('client', 'users'));
+        return view('admin.clients.edit', compact('client'));
     }
 
     public function update(AdminClientRequest $request, $id)
     {
-        $this->repository->update($request->all(), $id);
+        $this->clientService->update($request->all(), $id);
         return redirect()->route('admin.clients.index');
     }
 
