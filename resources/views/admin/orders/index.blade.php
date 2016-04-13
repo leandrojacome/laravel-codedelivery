@@ -41,7 +41,7 @@
                     <td>{{ $order->status }}</td>
                     <td>
                         <a href="{{ route('admin.orders.edit', ['id' => $order->id]) }}" class="btn btn-default btn-sm">Editar</a>
-                        <a href="{{ route('admin.categories.destroy', ['id' => $order->id]) }}" class="btn btn-danger btn-sm">Excluir</a>
+                        <a href="{{ route('admin.orders.destroy', ['id' => $order->id]) }}" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
                 </tr>
             @endforeach

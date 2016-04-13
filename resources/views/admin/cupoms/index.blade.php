@@ -6,7 +6,7 @@
 
         <h3>Cupoms</h3>
 
-        <a href="{{ route('admin.categories.create') }}" class="btn btn-success">Nova cupom</a>
+        <a href="{{ route('admin.cupoms.create') }}" class="btn btn-success">Nova cupom</a>
         <br>
         <br>
 
@@ -26,8 +26,8 @@
                     <td>{{ $cupom->code }}</td>
                     <td>{{ $cupom->value }}</td>
                     <td>
-                        <a href="" class="btn btn-default btn-sm">Editar</a>
-                        <a href="" class="btn btn-danger btn-sm">Excluir</a>
+                        <a href="{{ route('admin.cupoms.edit', ['id' => $cupom->id]) }}" class="btn btn-default btn-sm">Editar</a>
+                        <a href="{{ route('admin.cupoms.destroy', ['id' => $cupom->id]) }}" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
                 </tr>
             @endforeach

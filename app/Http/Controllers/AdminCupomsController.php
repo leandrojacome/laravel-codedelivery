@@ -3,9 +3,8 @@
 namespace CodeDelivery\Http\Controllers;
 
 
+use CodeDelivery\Http\Requests\AdminCupomRequest;
 use CodeDelivery\Repositories\CupomRepository;
-use CodeDelivery\Repositories\UserRepository;
-use Illuminate\Http\Request;
 
 class AdminCupomsController extends Controller
 {
@@ -27,23 +26,33 @@ class AdminCupomsController extends Controller
         return view('admin.cupoms.index', compact('cupoms'));
     }
 
-    public function edit($id, UserRepository $userRepository)
+    public function create()
     {
-        $order = $this->repository->find($id);
-        $list_status = [
-            0 => 'Pendente',
-            1 => 'Em Trânsito',
-            2 => 'Entregue',
-            3 => 'Cancelado',
-        ];
-        $deliveryman = $userRepository->getDeliveryman();
-        return view('admin.orders.edit', compact('order', 'list_status', 'deliveryman'));
+        return view('admin.cupoms.create');
     }
 
-    public function update(Request $request, $id)
+    public function store(AdminCupomRequest $request)
+    {
+        $this->repository->create($request->all());
+        return redirect()->route('admin.cupoms.index');
+    }
+
+    public function edit($id)
+    {
+        $cupom = $this->repository->find($id);
+        return view('admin.cupoms.edit', compact('cupom'));
+    }
+
+    public function update(AdminCupomRequest $request, $id)
     {
         $this->repository->update($request->all(), $id);
-        return redirect()->route('admin.orders.index');
+        return redirect()->route('admin.cupoms.index');
+    }
+
+    public function destroy($id)
+    {
+        $this->repository->delete($id);
+        return redirect()->route('admin.cupoms.index');
     }
 
 }

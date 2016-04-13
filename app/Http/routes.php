@@ -40,10 +40,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth.check
     Route::get('orders', ['as' => 'orders.index', 'uses' => 'AdminOrdersController@index']);
     Route::get('orders/{id}', ['as' => 'orders.edit', 'uses' => 'AdminOrdersController@edit']);
     Route::put('orders/update/{id}', ['as' => 'orders.update', 'uses' => 'AdminOrdersController@update']);
+    Route::get('orders/destroy/{id}', ['as' => 'orders.destroy', 'uses' => 'AdminOrdersController@destroy']);
 
     Route::get('cupoms', ['as' => 'cupoms.index', 'uses' => 'AdminCupomsController@index']);
-    Route::get('orders/create', ['as' => 'cupoms.create', 'uses' => 'AdminCupomsController@create']);
-    Route::put('orders/store', ['as' => 'cupoms.store', 'uses' => 'AdminCupomsController@store']);
+    Route::get('cupoms/create', ['as' => 'cupoms.create', 'uses' => 'AdminCupomsController@create']);
+    Route::post('cupoms/store', ['as' => 'cupoms.store', 'uses' => 'AdminCupomsController@store']);
+    Route::get('cupoms/edit/{id}', ['as' => 'cupoms.edit', 'uses' => 'AdminCupomsController@edit']);
+    Route::put('cupoms/update/{id}', ['as' => 'cupoms.update', 'uses' => 'AdminCupomsController@update']);
+    Route::get('cupoms/destroy/{id}', ['as' => 'cupoms.destroy', 'uses' => 'AdminCupomsController@destroy']);
 
 });
 

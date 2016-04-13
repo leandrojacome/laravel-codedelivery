@@ -46,4 +46,10 @@ class AdminOrdersController extends Controller
         return redirect()->route('admin.orders.index');
     }
 
+    public function destroy($id)
+    {
+        $this->repository->delete($id);
+        return redirect()->route('admin.orders.index');
+    }
+
 }
