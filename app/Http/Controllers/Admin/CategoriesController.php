@@ -1,12 +1,13 @@
 <?php
 
-namespace CodeDelivery\Http\Controllers;
+namespace CodeDelivery\Http\Controllers\Admin;
 
+use CodeDelivery\Http\Controllers\Controller;
 use CodeDelivery\Http\Requests;
-use CodeDelivery\Http\Requests\AdminCategoryRequest;
+use CodeDelivery\Http\Requests\Admin\CategoryRequest;
 use CodeDelivery\Repositories\CategoryRepository;
 
-class AdminCategoriesController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * @var CategoryRepository
@@ -31,7 +32,7 @@ class AdminCategoriesController extends Controller
         return view('admin.categories.create');
     }
 
-    public function store(AdminCategoryRequest $request)
+    public function store(CategoryRequest $request)
     {
         $this->repository->create($request->all());
         return redirect()->route('admin.categories.index');
@@ -42,7 +43,7 @@ class AdminCategoriesController extends Controller
         return view('admin.categories.edit', compact('category'));
     }
 
-    public function update(AdminCategoryRequest $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         $this->repository->update($request->all(), $id);
         return redirect()->route('admin.categories.index');

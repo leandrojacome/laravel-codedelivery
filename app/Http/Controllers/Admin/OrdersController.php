@@ -1,13 +1,14 @@
 <?php
 
-namespace CodeDelivery\Http\Controllers;
+namespace CodeDelivery\Http\Controllers\Admin;
 
 
+use CodeDelivery\Http\Controllers\Controller;
 use CodeDelivery\Repositories\OrderRepository;
 use CodeDelivery\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
-class AdminOrdersController extends Controller
+class OrdersController extends Controller
 {
 
     /**

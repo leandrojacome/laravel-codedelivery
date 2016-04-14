@@ -1,12 +1,13 @@
 <?php
 
-namespace CodeDelivery\Http\Controllers;
+namespace CodeDelivery\Http\Controllers\Admin;
 
 
-use CodeDelivery\Http\Requests\AdminCupomRequest;
+use CodeDelivery\Http\Controllers\Controller;
+use CodeDelivery\Http\Requests\Admin\CupomRequest;
 use CodeDelivery\Repositories\CupomRepository;
 
-class AdminCupomsController extends Controller
+class CupomsController extends Controller
 {
 
     /**
@@ -31,7 +32,7 @@ class AdminCupomsController extends Controller
         return view('admin.cupoms.create');
     }
 
-    public function store(AdminCupomRequest $request)
+    public function store(CupomRequest $request)
     {
         $this->repository->create($request->all());
         return redirect()->route('admin.cupoms.index');
@@ -43,7 +44,7 @@ class AdminCupomsController extends Controller
         return view('admin.cupoms.edit', compact('cupom'));
     }
 
-    public function update(AdminCupomRequest $request, $id)
+    public function update(CupomRequest $request, $id)
     {
         $this->repository->update($request->all(), $id);
         return redirect()->route('admin.cupoms.index');
